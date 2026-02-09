@@ -12,59 +12,72 @@
       justify-content: center;
       align-items: center;
       font-family: Georgia, serif;
-      background: linear-gradient(135deg, #fffafc, #ffffff);
-      animation: fadeIn 1.5s ease;
+      background: #fff5f8;
+      overflow: hidden;
+    }
+    .rose {
+      position: absolute;
+      font-size: 14px;
+      opacity: 0.25;
+      animation: float 20s linear infinite;
+    }
+    @keyframes float {
+      from {transform: translateY(110vh) rotate(0deg);}
+      to {transform: translateY(-10vh) rotate(360deg);}
     }
     .container {
-      text-align: left;
       max-width: 360px;
-      padding: 25px;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 26px;
+      background: #ffe6ee;
+      border-radius: 16px;
+      z-index: 10;
     }
     p {
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 18px;
-      color: #333;
+      font-style: italic;
+      font-weight: bold;
+      opacity: 0;
+      animation: fade 1.2s forwards;
     }
+    p:nth-child(1){animation-delay:.5s;}
+    p:nth-child(2){animation-delay:2s;}
+    p:nth-child(3){animation-delay:3.5s;}
+    p:nth-child(4){animation-delay:5s;}
+    p:nth-child(5){animation-delay:6.5s;}
     .firma {
       text-align: right;
-      font-size: 15px;
       margin-top: 25px;
-      color: #555;
       font-style: italic;
+      font-weight: bold;
+      opacity: 0;
+      animation: fade 1.2s forwards;
+      animation-delay: 8s;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fade {
+      from {opacity:0; transform:translateY(8px);}
+      to {opacity:1; transform:translateY(0);}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <p>Hay personas que llegan a tu vida y se quedan tanto tiempo que uno deja de preguntarse por qué.</p>
-    <p>
-      Estás ahí, como siempre, en los recuerdos viejos, en las conversaciones que ya no necesitan
-      presentación. Y sin darme cuenta, empecé a mirarte distinto… no de golpe, sino despacio,
-      como quien se da cuenta tarde de algo que siempre estuvo frente a sus ojos.
-    </p>
-    <p>
-      Me gusta la tranquilidad que me da hablar contigo, la confianza que no se fuerza,
-      las risas que salen solas. Me gusta que te conozca desde hace tanto,
-      y aun así sigas sorprendiéndome.
-    </p>
-    <p>
-      No es algo escandaloso ni intenso, es más bien una sensación cómoda,
-      bonita, que se instala sin pedir permiso.
-    </p>
-    <p>
-      No sé en qué momento pasó, solo sé que ahora, cuando pienso en ti,
-      hay algo más que costumbre. Hay curiosidad, hay ganas,
-      hay un “qué tal si…” que no me molesta en absoluto.
-    </p>
-    <div class="firma">— Con cariño</div>
-  </div>
+
+<script>
+for (let i = 0; i < 25; i++) {
+  const rose = document.createElement('div');
+  rose.className = 'rose';
+  rose.innerHTML = '🌹';
+  rose.style.left = Math.random()*100 + 'vw';
+  document.body.appendChild(rose);
+}
+</script>
+
+<div class="container">
+  <p>Hay personas que llegan a tu vida y se quedan tanto tiempo que uno deja de preguntarse por qué.</p>
+  <p>Estás ahí, como siempre, en los recuerdos viejos, en las conversaciones que ya no necesitan presentación.</p>
+  <p>Me gusta la tranquilidad que me da hablar contigo, la confianza que no se fuerza.</p>
+  <p>No es algo escandaloso ni intenso, es una sensación cómoda y bonita.</p>
+  <p>Cuando pienso en ti, hay curiosidad, hay ganas, hay un “qué tal si…”.</p>
+  <div class="firma">— Con cariño</div>
+</div>
+
 </body>
 </html>

@@ -8,44 +8,76 @@
     body {
       margin: 0;
       height: 100vh;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #fff1f5, #ffffff);
-      animation: fadeIn 1.5s ease;
+      background: linear-gradient(135deg, #ffe4ec, #fff);
     }
-    .container { text-align: center; padding: 20px; }
-    h1 {
+    .star {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border: 1px solid white;
+      transform: rotate(45deg);
+      opacity: 0.8;
+      animation: twinkle 4s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%,100%{opacity:0.3;}
+      50%{opacity:0.9;}
+    }
+    .sunflower {
+      position: absolute;
+      top: -50px;
       font-size: 26px;
-      margin-bottom: 25px;
-      animation: float 3s ease-in-out infinite;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      from {transform: translateY(-50px) rotate(0deg);}
+      to {transform: translateY(110vh) rotate(360deg);}
+    }
+    .container {
+      text-align: center;
+      z-index: 10;
+      background: rgba(255,255,255,0.75);
+      padding: 25px;
+      border-radius: 14px;
     }
     a {
       text-decoration: none;
-      font-size: 16px;
-      color: #000;
-      border: 1px solid #000;
+      color: #333;
+      border: 1px solid #333;
       padding: 10px 22px;
       border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    a:hover {
-      background: #000;
-      color: #fff;
-      transform: scale(1.05);
-    }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>¿Quieres ser mi San Valentín? ❤️</h1>
-    <a href="carta.html">Carta</a>
-  </div>
+
+<script>
+for (let i = 0; i < 40; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random()*100 + 'vw';
+  star.style.top = Math.random()*100 + 'vh';
+  document.body.appendChild(star);
+}
+for (let i = 0; i < 15; i++) {
+  const flower = document.createElement('div');
+  flower.className = 'sunflower';
+  flower.innerHTML = '🌻';
+  flower.style.left = Math.random()*100 + 'vw';
+  flower.style.animationDuration = (8+Math.random()*6)+'s';
+  document.body.appendChild(flower);
+}
+</script>
+
+<div class="container">
+  <h1>¿Quieres ser mi San Valentín? ❤️</h1>
+  <a href="carta.html">Carta</a>
+</div>
+
 </body>
 </html>
